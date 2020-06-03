@@ -4,9 +4,9 @@ use Illuminate\Database\Seeder;
 use \App\Model\Channel;
 
 /**
- * Class ChannelsTableSeeder
+ * Class ChannelTableSeeder
  */
-class ChannelsTableSeeder extends Seeder
+class ChannelTableSeeder extends Seeder
 {
     /** @var array $seeds */
     protected $seeds = [

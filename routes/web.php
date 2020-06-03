@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'IndexController@getIndex');
+Route::get('/channels', 'ChannelController@getChannels');
+Route::get('/channels/{channelUuid}/programmes/{programmeUuid}', 'ChannelController@getProgrammeInformation');
+Route::get('/channels/{channelUuid}/{date}/{timezone}', 'ChannelController@getProgrammeTimetable');

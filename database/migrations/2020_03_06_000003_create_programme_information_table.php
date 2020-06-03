@@ -19,8 +19,8 @@ class CreateProgrammeInformationTable extends Migration
             $table->string('programme_name');
             $table->text('programme_description');
             $table->string('programme_thumbnail');
-            $table->timestamp('start_time');
-            $table->timestamp('end_time');
+            $table->timestamp('start_time')->useCurrent();
+            $table->timestamp('end_time')->useCurrent();
             $table->integer('duration');
 
             $table->unsignedInteger('channel');

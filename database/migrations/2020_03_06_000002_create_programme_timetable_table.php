@@ -17,8 +17,8 @@ class CreateProgrammeTimetableTable extends Migration
         Schema::create('programme_timetable', function (Blueprint $table) {
             $table->increments('id');
             $table->string('programme_name');
-            $table->timestamp('start_time');
-            $table->timestamp('end_time');
+            $table->timestamp('start_time')->useCurrent();
+            $table->timestamp('end_time')->useCurrent();
             $table->integer('duration');
         });
     }
