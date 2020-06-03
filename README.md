@@ -2,7 +2,7 @@
 
 ## Install instructions
 
-1) git clone https://github.com/space-mvc/api-example.git
+1) run ```git clone https://github.com/space-mvc/api-example.git```
 
 2) run ```composer install```
 
