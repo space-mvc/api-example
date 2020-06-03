@@ -23,7 +23,7 @@ DB_PASSWORD=
 
 6. Setup laravel folder permissions
 
-```sudo chgrp -R www-data storage bootstrap/cache
-sudo chmod -R ug+rwx storage bootstrap/cache```
+```sudo chgrp -R www-data storage bootstrap/cache```
+```sudo chmod -R ug+rwx storage bootstrap/cache```
 
 
