@@ -20,3 +20,10 @@ DB_PASSWORD=
 ```
 
 5. Run ```php artisan migrate:refresh --seed``` to migrate the database seeds
+
+6. Setup laravel folder permissions
+
+```sudo chgrp -R www-data storage bootstrap/cache
+sudo chmod -R ug+rwx storage bootstrap/cache```
+
+
