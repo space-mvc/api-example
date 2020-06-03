@@ -2,9 +2,9 @@
 
 ## Install instructions
 
-1) run ```git clone https://github.com/space-mvc/api-example.git```
+1) Run ```git clone https://github.com/space-mvc/api-example.git```
 
-2) run ```composer install```
+2) Run ```composer install```
 
 3) Create a mysql database
 
@@ -19,5 +19,4 @@ DB_USERNAME=root
 DB_PASSWORD=
 ```
 
-5. run ```php artisan migrate:refresh --seed``` to migrate the database seeds
-
+5. Run ```php artisan migrate:refresh --seed``` to migrate the database seeds
