@@ -4,7 +4,7 @@
 
 1) git clone https://github.com/space-mvc/api-example.git
 
-2) composer install
+2) run ```composer install```
 
 3) Create a mysql database
 
