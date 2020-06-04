@@ -57,4 +57,8 @@ instead of this
 America/New_York
 
 
+## Mysql Workbench
+
+There is a mysql workbench file stored inside the /documentation folder
+
 
