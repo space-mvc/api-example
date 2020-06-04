@@ -46,6 +46,9 @@ as written here - https://www.php.net/manual/en/timezones.php
 
 
 You need to change the forward slash to a dash to insert into the url like this
+to make the timezone url friendly
+
+Use this format
 
 America-New_York
 
