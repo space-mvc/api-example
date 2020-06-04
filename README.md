@@ -45,13 +45,13 @@ Note when using the time zone parameter use normal php timezones
 as written here - https://www.php.net/manual/en/timezones.php 
 
 
-You need to change the backslash to a dash to insert into the url like this
+You need to change the forward slash to a dash to insert into the url like this
 
 America-New_York
 
 instead of this
 
-America\New_York
+America/New_York
 
 
 
