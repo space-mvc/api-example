@@ -64,3 +64,5 @@ There is a mysql workbench file stored inside the /documentation folder
 ## For best testing purposes
 
 It would be a good idea to take a look at the seed data to get an idea of what is queryable via the api
+
+Please feel free to add more seed data
