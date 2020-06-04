@@ -35,4 +35,21 @@ DB_PASSWORD=
 
 2. Run ```php artisan test```
 
+--------------------------------------
+
+## Postman Collection
+
+There is a postman collection stored inside the /documentation folder
+
+Note when using the time zone parameter use normal php timezones 
+as written here - https://www.php.net/manual/en/timezones.php 
+yet change the backslash to a dash to insert into the url like this
+
+America-New_York
+
+instead of this
+
+America\New_York
+
+
 
