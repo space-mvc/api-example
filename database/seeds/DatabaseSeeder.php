@@ -13,5 +13,6 @@ class DatabaseSeeder extends Seeder
     {
          $this->call(ChannelTableSeeder::class);
          $this->call(ProgrammeInformationTableSeeder::class);
+         $this->call(ProgrammeTimeTableSeeder::class);
     }
 }

@@ -4,7 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Model\Channel;
 use App\Model\ProgrammeInformation;
-use Illuminate\Http\Request;
+use App\Model\ProgrammeTimetable;
+use Carbon\Carbon;
 
 /**
  * Class ChannelController
@@ -23,13 +24,24 @@ class ChannelController extends Controller
      */
     public function getChannels()
     {
-        $results = Channel::get();
+        try {
 
-        return response()->json(
-            [
-                'data' => $results
-            ]
-        );
+            $results = Channel::get();
+
+            return response()->json(
+                [
+                    'data' => $results
+                ]
+            );
+
+        } catch (\Exception $e) {
+
+            return response()->json(
+                [
+                    'exception' => $e->getMessage()
+                ]
+            );
+        }
     }
 
     /**
@@ -43,11 +55,38 @@ class ChannelController extends Controller
      * @param $timezone
      * @return \Illuminate\Http\JsonResponse
      */
-    public function getProgrammeTimetable($channelUuid, $date, $timezone)
+    public function getProgrammeTimetable($channelUuid, $date, $timezone = 'Europe-London')
     {
-        $results = Channel::get();
+        try {
+            $timezone = str_replace('-', '/', $timezone);
 
-        return response()->json($results);
+            $startTime = Carbon::createFromFormat('Y-m-d H:i:s', $date.' 00:00:00', $timezone);
+            $endTime = Carbon::createFromFormat('Y-m-d H:i:s', $date.' 23:59:59', $timezone);
+
+            $results = ProgrammeTimetable::
+                where('start_time', '>=', $startTime)
+                ->where('end_time', '<=', $endTime)
+                ->get();
+
+            return response()->json(
+                [
+                    'data' => $results,
+                    'params'=> [
+                        'start_time' => $startTime,
+                        'end_time' => $endTime,
+                        'timezone' => $timezone,
+                    ]
+                ]
+            );
+
+        } catch (\Exception $e) {
+
+            return response()->json(
+                [
+                    'exception' => $e->getMessage()
+                ]
+            );
+        }
     }
 
     /**
@@ -62,10 +101,21 @@ class ChannelController extends Controller
      */
     public function getProgrammeInformation($channelUuid, $programmeUuid)
     {
-        $result = ProgrammeInformation::where('channel', $channelUuid)->where('id', $programmeUuid)->first();
+        try {
 
-        return response()->json([
-            'data' => $result
-        ]);
+            $result = ProgrammeInformation::where('channel', $channelUuid)->where('id', $programmeUuid)->first();
+
+            return response()->json([
+                'data' => $result
+            ]);
+
+        } catch (\Exception $e) {
+
+            return response()->json(
+                [
+                    'exception' => $e->getMessage()
+                ]
+            );
+        }
     }
 }

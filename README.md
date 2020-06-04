@@ -27,4 +27,12 @@ DB_PASSWORD=
 
 ```sudo chmod -R ug+rwx storage bootstrap/cache```
 
+--------------------------------------
+
+## Unit Tests
+
+1. Check DB_DATABASE inside phpunit.xml matches your database name
+
+2. Run ```php artisan test```
+
 
