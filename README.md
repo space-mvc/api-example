@@ -18,7 +18,7 @@ DB_HOST=127.0.0.1
 DB_PORT=3306
 DB_DATABASE=api_explorer
 DB_USERNAME=root
-DB_PASSWORD=
+DB_PASSWORD=root
 ```
 
 6. Run ```php artisan migrate:refresh --seed``` to migrate the database seeds
