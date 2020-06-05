@@ -8,7 +8,7 @@
 
 3) Create a virtual host as http://local.api.com to match postman urls
 
-4) Create a mysql database
+4) Create a mysql database as api_explorer
 
 5) Update the database settings inside .env to match your database/host
 
@@ -16,7 +16,7 @@
 DB_CONNECTION=mysql
 DB_HOST=127.0.0.1
 DB_PORT=3306
-DB_DATABASE=laravel
+DB_DATABASE=api_explorer
 DB_USERNAME=root
 DB_PASSWORD=
 ```
