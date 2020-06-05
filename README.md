@@ -37,6 +37,8 @@ DB_PASSWORD=root
 
 2. Run ```php artisan test```
 
+All test files are located inside the /tests/Feature folder
+
 --------------------------------------
 
 ## Postman Collection
