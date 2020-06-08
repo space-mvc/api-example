@@ -25,7 +25,8 @@
 					"path": [
 						"channels"
 					]
-				}
+				},
+				"description": "This is to retrieve the channels collection\n\n/channels"
 			},
 			"response": []
 		},
@@ -52,7 +53,8 @@
 						"programmes",
 						"1"
 					]
-				}
+				},
+				"description": "This is to retrieve the programmes information\n\n/channels/{channelUuid}/programmes/{programmeUuid}"
 			},
 			"response": []
 		},
@@ -66,7 +68,7 @@
 					"raw": ""
 				},
 				"url": {
-					"raw": "http://local.api.com/channels/1/2020-06-01/America-New_York",
+					"raw": "http://local.api.com/channels/1/2020-06-01/Europe-London",
 					"protocol": "http",
 					"host": [
 						"local",
@@ -77,9 +79,10 @@
 						"channels",
 						"1",
 						"2020-06-01",
-						"America-New_York"
+						"Europe-London"
 					]
-				}
+				},
+				"description": "This is to retrieve the programme timetable\n\n/channels/{channelUuid}/{date}/{timezone}"
 			},
 			"response": []
 		}
