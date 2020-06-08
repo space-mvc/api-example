@@ -26,9 +26,10 @@ class ChannelController extends Controller
     public function getChannels()
     {
         try {
-
+            // run query
             $results = Channel::get();
 
+            // return success response
             return response()->json(
                 [
                     'data' => $results
@@ -37,6 +38,7 @@ class ChannelController extends Controller
 
         } catch (\Exception $e) {
 
+            // return exception response
             return response()->json(
                 [
                     'exception' => $e->getMessage()
@@ -59,6 +61,7 @@ class ChannelController extends Controller
     public function getProgrammeTimetable($channelUuid, $date, $timezone = 'Europe-London')
     {
         try {
+            // setup validation
             $validator = Validator::make(
                 [
                     'channel_uuid' => $channelUuid,
@@ -72,7 +75,10 @@ class ChannelController extends Controller
                 ]
             );
 
+            // run validation
             if ($validator->fails()) {
+
+                // return failed validation response
                 return response()->json(
                     [
                         'validation_errors' => $validator->errors()
@@ -80,16 +86,18 @@ class ChannelController extends Controller
                 );
             }
 
+            // setup variables
             $timezone = str_replace('-', '/', $timezone);
-
             $startTime = Carbon::createFromFormat('Y-m-d H:i:s', $date.' 00:00:00', $timezone);
             $endTime = Carbon::createFromFormat('Y-m-d H:i:s', $date.' 23:59:59', $timezone);
 
+            // run query
             $results = ProgrammeTimetable::
                 where('start_time', '>=', $startTime)
                 ->where('end_time', '<=', $endTime)
                 ->get();
 
+            // return success response
             return response()->json(
                 [
                     'data' => $results,
@@ -103,6 +111,7 @@ class ChannelController extends Controller
 
         } catch (\Exception $e) {
 
+            // return exception response
             return response()->json(
                 [
                     'exception' => $e->getMessage()
@@ -125,6 +134,7 @@ class ChannelController extends Controller
     {
         try {
 
+            // setup validation
             $validator = Validator::make(
                 [
                     'channel_uuid' => $channelUuid,
@@ -136,7 +146,10 @@ class ChannelController extends Controller
                 ]
             );
 
+            // run validation
             if ($validator->fails()) {
+
+                // return failed validation response
                 return response()->json(
                     [
                         'validation_errors' => $validator->errors()
@@ -144,14 +157,17 @@ class ChannelController extends Controller
                 );
             }
 
+            // run query
             $result = ProgrammeInformation::where('channel', $channelUuid)->where('id', $programmeUuid)->first();
 
+            // return success response
             return response()->json([
                 'data' => $result
             ]);
 
         } catch (\Exception $e) {
 
+            // return exception response
             return response()->json(
                 [
                     'exception' => $e->getMessage()
