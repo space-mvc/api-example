@@ -6,6 +6,7 @@ use App\Model\Channel;
 use App\Model\ProgrammeInformation;
 use App\Model\ProgrammeTimetable;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Validator;
 
 /**
  * Class ChannelController
@@ -58,6 +59,27 @@ class ChannelController extends Controller
     public function getProgrammeTimetable($channelUuid, $date, $timezone = 'Europe-London')
     {
         try {
+            $validator = Validator::make(
+                [
+                    'channel_uuid' => $channelUuid,
+                    'date' => $date,
+                    'timezone' => $timezone
+                ],
+                [
+                    'channel_uuid' => 'required|integer',
+                    'date' => 'required|date',
+                    'timezone' => 'required',
+                ]
+            );
+
+            if ($validator->fails()) {
+                return response()->json(
+                    [
+                        'validation_errors' => $validator->errors()
+                    ]
+                );
+            }
+
             $timezone = str_replace('-', '/', $timezone);
 
             $startTime = Carbon::createFromFormat('Y-m-d H:i:s', $date.' 00:00:00', $timezone);
@@ -102,6 +124,25 @@ class ChannelController extends Controller
     public function getProgrammeInformation($channelUuid, $programmeUuid)
     {
         try {
+
+            $validator = Validator::make(
+                [
+                    'channel_uuid' => $channelUuid,
+                    'programme_uuid' => $programmeUuid,
+                ],
+                [
+                    'channel_uuid' => 'required|integer',
+                    'programme_uuid' => 'required|integer'
+                ]
+            );
+
+            if ($validator->fails()) {
+                return response()->json(
+                    [
+                        'validation_errors' => $validator->errors()
+                    ]
+                );
+            }
 
             $result = ProgrammeInformation::where('channel', $channelUuid)->where('id', $programmeUuid)->first();
 
